@@ -28,12 +28,29 @@ func superAdd(numbers ...int) int {
 	return total
 }
 
+func canIDrink(age int) bool {
+	if koreanAge := age + 2; koreanAge < 18 {
+		return false
+	}
+	return true
+}
+
+func checkAge(age int) bool {
+	switch age {
+	case 10 :
+		return false
+	case 18 :
+		return true
+	}
+	return false
+}
 func main()  {
 	//fmt.Println(multiply(2, 2))
 	//totalLenght, upperName := lenAndUpper("bin hyun")
 	//fmt.Println(totalLenght, upperName)
 	//repeatMe("bin", "jun", "nua", "woju", "jina")
-	result := superAdd(1,2,3,4,5,6,7,8,9)
-	fmt.Println(result)
-
+	//result := superAdd(1,2,3,4,5,6,7,8,9)
+	//fmt.Println(result)
+	fmt.Println(canIDrink(16))
+	fmt.Println(checkAge(18))
 }
