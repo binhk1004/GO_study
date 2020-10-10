@@ -1,7 +1,11 @@
 package main
 
-import "github.com/binhk1004/banking"
+import (
+	"fmt"
+	"github.com/binhk1004/accounts"
+)
 
 func main()  {
-	account := banking.Account{}
+	account := accounts.NewAccount("bin hyun")
+	fmt.Println(account)
 }
