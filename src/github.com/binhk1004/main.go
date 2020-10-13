@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 var errRequestFailed = errors.New("요청이 실패 하였습니다.")
@@ -32,7 +33,13 @@ func main()  {
 	for url, result := range results{
 		fmt.Println(url, result)
 	}
-
+	c := make(chan bool)
+	people := [2]string{"bin", "jina"}
+	for _, person := range people{
+		go isSexy(person, c)
+	}
+	fmt.Println(<- c)
+	fmt.Println(<- c)
 }
 
 func hitURL(url string) error {
@@ -43,4 +50,10 @@ func hitURL(url string) error {
 		return errRequestFailed
 	}
 	return nil
+}
+
+func isSexy(person string, c chan bool) {
+	time.Sleep(time.Second * 5)
+	fmt.Println(person)
+	c <- true
 }
